@@ -1,14 +1,14 @@
-# Document Stores
-
 **ToDo: Einleitungstext einfügen**
+
+# Grundlegende CRUD Operationen
 
 ## Daten einfügen
 
 Zuerst werden die Collections `employees` und `departments` mit Beispieldaten befüllt (und dadurch gleichzeitig initalisiert). Auf diesen Collections basieren die Abfragen im weiteren Verlauf. 
 
-```MQL
-Collection employees
 
+Collection **employees**
+```
 `db.employees.insertMany([
   {
     employee_id: 1,
@@ -48,9 +48,8 @@ Collection employees
 ])`
 ```
 
+Collection **departments**
 ```
-Collection departments
-
 `db.departments.insertMany([
   {
     department_id: 101,
@@ -77,7 +76,15 @@ Collection departments
 
 ## Daten hinzufügen
 
+
+
 ## Daten aktualisieren
 
+
+
 ## Daten löschen
+
+
+
+# Aggregationen
 
