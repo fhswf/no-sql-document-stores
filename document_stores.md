@@ -9,7 +9,7 @@ Zuerst werden die Collections `employees` und `departments` mit Beispieldaten be
 
 Collection **employees**
 ```
-`db.employees.insertMany([
+db.employees.insertMany([
   {
     employee_id: 1,
     name: "John Doe",
@@ -45,12 +45,12 @@ Collection **employees**
     position: "Sales Manager",
     salary: 95000
   }
-])`
+])
 ```
 
 Collection **departments**
 ```
-`db.departments.insertMany([
+db.departments.insertMany([
   {
     department_id: 101,
     name: "Engineering",
@@ -71,20 +71,85 @@ Collection **departments**
     name: "Finance",
     location: "Houston"
   }
-])`
+])
 ```
 
 ## Daten hinzufügen
 
+**Einen** Mitarbeiter hinzufügen (*Neue Mitarbeiterin in der HR Abteilung*)
+```
+db.employees.insertOne({
+  employee_id: 6,
+  name: "Alice Johnson",
+  department_id: 103,
+  position: "HR Assistant",
+  salary: 60000
+})
+```
 
+**Mehrere** Mitarbeiter hinzufügen (*Verschiedene Abteilungen*)
+```
+db.employees.insertMany([
+  {
+    employee_id: 7,
+    name: "Bob Williams",
+    department_id: 102,
+    position: "Marketing Coordinator",
+    salary: 70000
+  },
+  {
+    employee_id: 8,
+    name: "Charlie Brown",
+    department_id: 101,
+    position: "Software Developer",
+    salary: 80000
+  }
+])
+```
 
 ## Daten aktualisieren
 
+**Einzelne** Mitarbeierin aktualisieren (*Gehalt auf neuen Wert setzen*)
+```
+db.employees.updateOne(
+  { name: "Alice Johnson" },
+  { $set: { salary: 65000 } }
+)
+```
 
+**Mehrere** Mitarbeiter aktualisieren (*Gehaltserhöhung für alle Mitarbeiter der Abteilung Engineering*)
+```
+db.employees.updateMany(
+  { department_id: 101 },
+  { $inc: { salary: 5000 } }
+)
+```
 
 ## Daten löschen
 
+**Einzelnen** Mitarbeiter löschen (*ID 6*)
+```
+db.employees.deleteOne({ employee_id: 6 })
+```
+
+**Mehrere** Mitarbeiter löschen (*Gehalt < 70000*)
+```
+db.employees.deleteMany({ salary: { $lt: 70000 } })
+```
+
+# Daten auslesen
+
+## Grundlegende Abfragen 
 
 
-# Aggregationen
+
+## Aggregationen
+
+
+
+## Verbinden von Collections (*Joins*)
+
+
+
+# Indizes
 
