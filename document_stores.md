@@ -151,18 +151,18 @@ db.employees.deleteMany({ salary: { $lt: 70000 } })
 
 ## Grundlegende Abfragen
 
-Name, Position und Gehalt von allen Mitarbeitern:
+Name, Position und Gehalt von **allen** Mitarbeitern:<br>
 `db.employees.find({}, {_id: 0, name: 1, position: 1, salary: 1})`
 
-Alle Mitarbeiter in der Abteilung "Engineering" anzeigen:
+Alle Mitarbeiter in der **Abteilung "Engineering"** anzeigen:<br>
 `db.employees.find({ department_id: 101 })`
 
-Mitarbeiter mit einem Gehalt über 80000 anzeigen:
+Mitarbeiter mit einem **Gehalt über 80000** anzeigen:<br>
 `db.employees.find({ salary: { $gt: 80000 } })`
 
 ## Aggregationen
 
-Durchschnittliches Gehalt pro Abteilung berechnen:
+**Durchschnittliches Gehalt** pro Abteilung berechnen:
 ```
 db.employees.aggregate([
   {
@@ -174,7 +174,7 @@ db.employees.aggregate([
 ])
 ```
 
-Anzahl der Mitarbeiter pro Abteilung anzeigen:
+**Anzahl** der Mitarbeiter **pro Abteilung** anzeigen:
 ```
 db.employees.aggregate([
   {
@@ -188,7 +188,7 @@ db.employees.aggregate([
 
 ## Verbinden von Collections (*Joins*)
 
-Mitarbeiter mit ihren Abteilungsinformationen anzeigen:
+Mitarbeiter mit ihren **Abteilungsinformationen** anzeigen:
 ```
 db.employees.aggregate([
   {
@@ -216,7 +216,7 @@ db.employees.aggregate([
 ])
 ```
 
-Abteilungen mit der Anzahl ihrer Mitarbeiter anzeigen:
+Abteilungen mit der **Anzahl ihrer Mitarbeiter** anzeigen:
 ```
 db.departments.aggregate([
   {
@@ -241,7 +241,41 @@ db.departments.aggregate([
 
 # Indizes
 
+## Perfomanz der Abfrage
 
+Index auf department_id in der employees-Sammlung:<br>
+`db.employees.createIndex({ department_id: 1 })`
+
+Dieser Index verbessert die Abfrageleistung, wenn nach Mitarbeitern basierend auf ihrer Abteilungs-ID gesucht wird. (Auch aus relationalen Datenbanken bekannt)
+
+*Beispiel bei relationalen Datenbanken: ???* **Todo: ergänzen**
+
+---
+
+Zusammengesetzter Index auf { department_id: 1, salary: -1 } in der employees-Sammlung:
+`db.employees.createIndex({ department_id: 1, salary: -1 })`
+
+Dieser zusammengesetzte Index verbessert die Abfrageleistung, wenn nach Mitarbeitern basierend auf ihrer Abteilungs-ID und ihrem Gehalt sortiert oder gefiltert wird.
+
+*Beispiel bei relationalen Datenbanken: ???* **Todo: ergänzen**
+
+## Volltextsuche
+
+Textindex auf name in der employees-Sammlung:
+`db.employees.createIndex({ name: "text" })`
+
+Dieser Textindex ermöglicht die Durchführung von Volltextsuchen nach Mitarbeiternamen.
+
+*Beispiel bei relationalen Datenbanken: ???* **Todo: ergänzen**
+
+## Einzigartige (Unique) Indizes
+
+Einzigartiger Index auf department_id in der departments-Sammlung:
+`db.departments.createIndex({ department_id: 1 }, { unique: true })`
+
+Dieser eindeutige Index stellt sicher, dass jede Abteilungs-ID nur einmal vorkommt.<br>
+
+*Beispiel bei relationalen Datenbanken: Unique Constraints*
 
 # Aufgaben
 
