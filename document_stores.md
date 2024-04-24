@@ -1,4 +1,4 @@
-**ToDo: Einleitungstext einfügen**
+**Todo: Einleitungstext einfügen**
 
 # Grundlegende CRUD Operationen
 
@@ -139,13 +139,57 @@ db.employees.deleteMany({ salary: { $lt: 70000 } })
 
 # Daten auslesen
 
-## Grundlegende Abfragen 
+## Aufbau der Abfrage
 
+**Todo: Quelle (Buch) einfügen**<br>
 
+`db.<collection>.find ( kriterien, projektion )`
+
+- In der **MongoDB Query Language** (kurz: MQL) kann in einer Abfrage **eine** Collection durchsucht werden
+- Gesucht wird anhand eines **Dokuments**, dass die **Suchkriterien** beinhaltet
+- Außerdem kann die **Ausgabe** konfiguriert werden, um z.B. einzelne Spalten aus- oder einzublenden
+
+## Grundlegende Abfragen
+
+Name, Position und Gehalt von allen Mitarbeitern:
+
+`db.employees.find({}, {_id: 0, name: 1, position: 1, salary: 1})`
+
+Alle Mitarbeiter in der Abteilung "Engineering" anzeigen:
+
+`db.employees.find({ department_id: 101 })`
+
+Mitarbeiter mit einem Gehalt über 80000 anzeigen:
+
+`db.employees.find({ salary: { $gt: 80000 } })`
 
 ## Aggregationen
 
+Durchschnittliches Gehalt pro Abteilung berechnen:
 
+```
+db.employees.aggregate([
+  {
+    $group: {
+      _id: "$department_id",
+      avgSalary: { $avg: "$salary" }
+    }
+  }
+])
+```
+
+Anzahl der Mitarbeiter pro Abteilung anzeigen:
+
+```
+db.employees.aggregate([
+  {
+    $group: {
+      _id: "$department_id",
+      count: { $sum: 1 }
+    }
+  }
+])
+```
 
 ## Verbinden von Collections (*Joins*)
 
