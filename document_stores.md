@@ -109,7 +109,7 @@ db.employees.insertMany([
 
 ## Daten aktualisieren
 
-**Einzelne** Mitarbeierin aktualisieren (*Gehalt auf neuen Wert setzen*)
+**Einzelne** Mitarbeiterin aktualisieren (*Gehalt auf neuen Wert setzen*)
 ```
 db.employees.updateOne(
   { name: "Alice Johnson" },
