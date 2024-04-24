@@ -152,21 +152,17 @@ db.employees.deleteMany({ salary: { $lt: 70000 } })
 ## Grundlegende Abfragen
 
 Name, Position und Gehalt von allen Mitarbeitern:
-
 `db.employees.find({}, {_id: 0, name: 1, position: 1, salary: 1})`
 
 Alle Mitarbeiter in der Abteilung "Engineering" anzeigen:
-
 `db.employees.find({ department_id: 101 })`
 
 Mitarbeiter mit einem Gehalt über 80000 anzeigen:
-
 `db.employees.find({ salary: { $gt: 80000 } })`
 
 ## Aggregationen
 
 Durchschnittliches Gehalt pro Abteilung berechnen:
-
 ```
 db.employees.aggregate([
   {
@@ -179,7 +175,6 @@ db.employees.aggregate([
 ```
 
 Anzahl der Mitarbeiter pro Abteilung anzeigen:
-
 ```
 db.employees.aggregate([
   {
@@ -193,7 +188,60 @@ db.employees.aggregate([
 
 ## Verbinden von Collections (*Joins*)
 
+Mitarbeiter mit ihren Abteilungsinformationen anzeigen:
+```
+db.employees.aggregate([
+  {
+    $lookup: {
+      from: "departments",
+      localField: "department_id",
+      foreignField: "department_id",
+      as: "department"
+    }
+  },
+  {
+    $unwind: "$department"
+  },
+  {
+    $project: {
+      _id: 0,
+      employee_id: 1,
+      name: 1,
+      position: 1,
+      salary: 1,
+      department_name: "$department.name",
+      location: "$department.location"
+    }
+  }
+])
+```
 
+Abteilungen mit der Anzahl ihrer Mitarbeiter anzeigen:
+```
+db.departments.aggregate([
+  {
+    $lookup: {
+      from: "employees",
+      localField: "department_id",
+      foreignField: "department_id",
+      as: "employees"
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      department_id: 1,
+      name: 1,
+      location: 1,
+      employee_count: { $size: "$employees" }
+    }
+  }
+])
+```
 
 # Indizes
+
+
+
+# Aufgaben
 
