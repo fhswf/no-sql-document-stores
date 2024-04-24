@@ -188,6 +188,9 @@ db.employees.aggregate([
 
 ## Verbinden von Collections (*Joins*)
 
+**Todo: Ergänzen, warum das eigentlich nicht der Standard in dokumentorientierten Datenbanken ist (Es steht alles in einem Dokument)<br>
+--> Evl. Geschichte der Joins/Lookups in MongoDB herausfinden. Warum gibt es das überhaupt?**
+
 Mitarbeiter mit ihren **Abteilungsinformationen** anzeigen:
 ```
 db.employees.aggregate([
@@ -259,15 +262,6 @@ Dieser zusammengesetzte Index verbessert die Abfrageleistung, wenn nach Mitarbei
 
 *Beispiel bei relationalen Datenbanken: ???* **Todo: ergänzen**
 
-## Volltextsuche
-
-Textindex auf name in der employees-Sammlung:
-`db.employees.createIndex({ name: "text" })`
-
-Dieser Textindex ermöglicht die Durchführung von Volltextsuchen nach Mitarbeiternamen.
-
-*Beispiel bei relationalen Datenbanken: ???* **Todo: ergänzen**
-
 ## Einzigartige (Unique) Indizes
 
 Einzigartiger Index auf department_id in der departments-Sammlung:
@@ -276,6 +270,15 @@ Einzigartiger Index auf department_id in der departments-Sammlung:
 Dieser eindeutige Index stellt sicher, dass jede Abteilungs-ID nur einmal vorkommt.<br>
 
 *Beispiel bei relationalen Datenbanken: Unique Constraints*
+
+## Volltextsuche
+
+Textindex auf name in der employees-Sammlung:
+`db.employees.createIndex({ name: "text" })`
+
+Dieser Textindex ermöglicht die Durchführung von Volltextsuchen nach Mitarbeiternamen.
+
+*Beispiel bei relationalen Datenbanken: ???* **Todo: ergänzen**
 
 # Aufgaben
 
