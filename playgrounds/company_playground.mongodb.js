@@ -40,6 +40,8 @@ db.employees.insertMany([
   }
 ]);
 
+//db.employees.find();
+
 db.departments.insertMany([
     {
       department_id: 101,
@@ -62,6 +64,8 @@ db.departments.insertMany([
       location: "Houston"
     }
   ]);
+
+//db.departments.find();
 
 db.employees.insertOne({
   employee_id: 6,
@@ -101,3 +105,6 @@ db.employees.updateMany(
 db.employees.deleteOne({ employee_id: 6 })
 
 db.employees.deleteMany({ salary: { $lt: 70000 } })
+
+db.employees.find();
+//db.departments.find();
