@@ -1,5 +1,3 @@
-**Todo: Einleitungstext einfügen**
-
 # Grundlegende CRUD Operationen
 
 ## Daten einfügen
@@ -141,8 +139,6 @@ db.employees.deleteMany({ salary: { $lt: 70000 } })
 
 ## Aufbau der Abfrage
 
-**Todo: Quelle (Buch) einfügen**<br>
-
 `db.<collection>.find ( kriterien, projektion )`
 
 - In der **MongoDB Query Language** (kurz: MQL) kann in einer Abfrage **eine** Collection durchsucht werden
@@ -152,13 +148,19 @@ db.employees.deleteMany({ salary: { $lt: 70000 } })
 ## Grundlegende Abfragen
 
 Name, Position und Gehalt von **allen** Mitarbeitern:<br>
-`db.employees.find({}, {_id: 0, name: 1, position: 1, salary: 1})`
+```
+db.employees.find({}, {_id: 0, name: 1, position: 1, salary: 1})
+```
 
 Alle Mitarbeiter in der **Abteilung "Engineering"** anzeigen:<br>
-`db.employees.find({ department_id: 101 })`
+```
+db.employees.find({ department_id: 101 })
+```
 
 Mitarbeiter mit einem **Gehalt über 80000** anzeigen:<br>
-`db.employees.find({ salary: { $gt: 80000 } })`
+```
+db.employees.find({ salary: { $gt: 80000 } })
+```
 
 ## Aggregationen
 
@@ -188,7 +190,7 @@ db.employees.aggregate([
 
 ## Verbinden von Collections (*Joins*)
 
-**Todo: Ergänzen, warum das eigentlich nicht der Standard in dokumentorientierten Datenbanken ist (Es steht alles in einem Dokument)<br>
+Joins (also das Verbinden von verschiedenen Collections) sind in dokumentorientierten Datenbanken nicht so verbreitet wie in relationen Datenbanken.<br>
 --> Evl. Geschichte der Joins/Lookups in MongoDB herausfinden. Warum gibt es das überhaupt?**
 
 Mitarbeiter mit ihren **Abteilungsinformationen** anzeigen:
@@ -279,6 +281,3 @@ Textindex auf name in der employees-Sammlung:
 Dieser Textindex ermöglicht die Durchführung von Volltextsuchen nach Mitarbeiternamen.
 
 *Beispiel bei relationalen Datenbanken: ???* **Todo: ergänzen**
-
-# Aufgaben
-

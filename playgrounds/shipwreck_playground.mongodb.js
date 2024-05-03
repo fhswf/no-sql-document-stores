@@ -18002,7 +18002,12 @@ const shipwrecks = [{
 use('geo_example');
 db.shipwrecks.insertMany(shipwrecks)
 
-use('geo_example');
+db.shipwrecks.createIndex( { "coordinates" : "2dsphere" } )
+
+//Erste 10 Datensätze ansehen
 db.shipwrecks
   .find({}, { _id: 0 })
   .limit(10);
+
+  
+//Aufgaben

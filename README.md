@@ -10,13 +10,7 @@ Zu Beginn sollte der folgende Befehl ausgeführt werden:
 npm install
 ```
 
-Anschließend kann das Projekt mit dem folgenden Shell-Befehl gestartet werden:
-
-```Shell
-npm start
-```
-
-## Verbindung zur Datenbank herstellen
+## Verbindung zur lokalen Datenbank herstellen
 
 1. MongoDB Erweiterung öffnen
 2. "Add Connection" klicken
@@ -30,6 +24,10 @@ npm start
 
 # Playgrounds starten
 
-## Company Example (Grundlegenden CRUD Operationen)
+Über die MongoDB Erweiterung können sogenannte **Playgrounds** genutzt werden. Dabei handelt es sich um interaktive Umgebungen, in denen MongoDB-Befehle und -Abfragen ausgeführt werden können. Die Ergebnisse werden in Echtzeit angezeigt.
 
-## Geo Example (Shipwrecks Collection u.a. mit Koordinaten)
+## Company Example (Grundlegende CRUD Operationen)
+In der Datei [company_playground.mongodb.js](playgrounds/company_playground.mongodb.js) befindet sich
+
+
+## Shipwreck Example (Shipwrecks Collection inkl. Geo-Daten)
