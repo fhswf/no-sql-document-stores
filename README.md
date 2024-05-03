@@ -16,4 +16,19 @@ Anschließend kann das Projekt mit dem folgenden Shell-Befehl gestartet werden:
 npm start
 ```
 
+## Verbindung zur Datenbank herstellen
+
+1. MongoDB Erweiterung öffnen
+2. "Add Connection" klicken
+3. "Open form" unter "Advanced Connection Settings" klicken
+4. Mit der Default-URI `mongodb://localhost:27017/` auf "Save & Connect" klicken
+5. Verbindung ansehen
+
+![](images/image.png)
+
+![](images/image-1.png)
+
+
+
 ## Playground starten
+
