@@ -106,5 +106,87 @@ db.employees.deleteOne({ employee_id: 6 })
 
 db.employees.deleteMany({ salary: { $lt: 70000 } })
 
-db.employees.find();
+// Daten ansehen
+//db.employees.find();
 //db.departments.find();
+
+// GRUNDLEGENDE ABFRAGEN
+
+//db.employees.find({}, {_id: 0, name: 1, position: 1, salary: 1})
+//db.employees.find({ department_id: 101 })
+//db.employees.find({ salary: { $gt: 80000 } })
+
+//AGGREGATIONEN
+
+/*
+db.employees.aggregate([
+  {
+    $group: {
+      _id: "$department_id",
+      avgSalary: { $avg: "$salary" }
+    }
+  }
+])
+*/
+
+/*
+db.employees.aggregate([
+  {
+    $group: {
+      _id: "$department_id",
+      count: { $sum: 1 }
+    }
+  }
+])
+*/
+
+//VERBINDEN VON COLLECTIONS
+
+/*
+db.employees.aggregate([
+  {
+    $lookup: {
+      from: "departments",
+      localField: "department_id",
+      foreignField: "department_id",
+      as: "department"
+    }
+  },
+  {
+    $unwind: "$department"
+  },
+  {
+    $project: {
+      _id: 0,
+      employee_id: 1,
+      name: 1,
+      position: 1,
+      salary: 1,
+      department_name: "$department.name",
+      location: "$department.location"
+    }
+  }
+])
+*/
+
+/*
+db.departments.aggregate([
+  {
+    $lookup: {
+      from: "employees",
+      localField: "department_id",
+      foreignField: "department_id",
+      as: "employees"
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      department_id: 1,
+      name: 1,
+      location: 1,
+      employee_count: { $size: "$employees" }
+    }
+  }
+])
+*/

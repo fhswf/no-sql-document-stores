@@ -18000,14 +18000,40 @@ const shipwrecks = [{
   }]
 
 use('geo_example');
+db.shipwrecks.drop()
 db.shipwrecks.insertMany(shipwrecks)
 
+// Index für die Koordinaten erstellen
 db.shipwrecks.createIndex( { "coordinates" : "2dsphere" } )
 
-//Erste 10 Datensätze ansehen
-db.shipwrecks
-  .find({}, { _id: 0 })
-  .limit(10);
+// Erste 10 Datensätze ansehen
+// db.shipwrecks.find({}, { _id: 0 }).limit(10);
 
   
-//Aufgaben
+// Aufgaben
+// Koordinaten von New York City: -74.0058 (longitude), 40.7127 (latitude)
+
+// 1. Gebe die 5 nächstgelegenen Schiffswracks zu New York City aus.
+
+  // Enter Code here
+
+// 2. Sortiere die Schiffswracks im Umkreis von New York City (Radius: 0.05 Grad) nach Wassertiefe und gib die Top 5 Ergebnisse aus
+
+  // Enter Code here
+
+// 3. Gib alle Schiffswracks in einem quadratischen Bereich aus, der im Bereich von New York liegt.
+//    Tipp: Hierzu wird ein Polygon verwendet.
+/*
+Als Koordinaten für die Eckpunkte des quadratischen Bereichs können die folgenden genutzt werden:
+Südwesten: (-75, 40)
+Südosten: (-73.5, 40)
+Nordosten: (-73.5, 41)
+Nordwesten: (-75, 41)
+*/
+
+  // Enter Code here
+
+// 4. Führe eine Volltextsuche über alle Spalten nach dem Wort "dangerous" aus.
+//    Tipp: Dafür muss zunächst ein Index erstellt werden
+
+  // Enter Code here

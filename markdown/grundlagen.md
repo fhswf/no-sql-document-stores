@@ -190,8 +190,7 @@ db.employees.aggregate([
 
 ## Verbinden von Collections (*Joins*)
 
-Joins (also das Verbinden von verschiedenen Collections) sind in dokumentorientierten Datenbanken nicht so verbreitet wie in relationen Datenbanken.<br>
---> Evl. Geschichte der Joins/Lookups in MongoDB herausfinden. Warum gibt es das überhaupt?**
+Joins (also das Verbinden von verschiedenen Collections) sind in dokumentorientierten Datenbanken nicht so verbreitet wie in relationen Datenbanken. Durch die Denormalisierung (keine Aufteilung in mehrere Tabellen) sind oft alle benötigten Informationen in den Dokumenten **einer** Collection gespeichert.<br>
 
 Mitarbeiter mit ihren **Abteilungsinformationen** anzeigen:
 ```
@@ -249,35 +248,35 @@ db.departments.aggregate([
 ## Perfomanz der Abfrage
 
 Index auf department_id in der employees-Sammlung:<br>
-`db.employees.createIndex({ department_id: 1 })`
+```
+db.employees.createIndex({ department_id: 1 })
+```
 
 Dieser Index verbessert die Abfrageleistung, wenn nach Mitarbeitern basierend auf ihrer Abteilungs-ID gesucht wird. (Auch aus relationalen Datenbanken bekannt)
-
-*Beispiel bei relationalen Datenbanken: ???* **Todo: ergänzen**
 
 ---
 
 Zusammengesetzter Index auf { department_id: 1, salary: -1 } in der employees-Sammlung:
-`db.employees.createIndex({ department_id: 1, salary: -1 })`
+```
+db.employees.createIndex({ department_id: 1, salary: -1 })
+```
 
 Dieser zusammengesetzte Index verbessert die Abfrageleistung, wenn nach Mitarbeitern basierend auf ihrer Abteilungs-ID und ihrem Gehalt sortiert oder gefiltert wird.
-
-*Beispiel bei relationalen Datenbanken: ???* **Todo: ergänzen**
 
 ## Einzigartige (Unique) Indizes
 
 Einzigartiger Index auf department_id in der departments-Sammlung:
-`db.departments.createIndex({ department_id: 1 }, { unique: true })`
+```
+db.departments.createIndex({ department_id: 1 }, { unique: true })
+```
 
 Dieser eindeutige Index stellt sicher, dass jede Abteilungs-ID nur einmal vorkommt.<br>
-
-*Beispiel bei relationalen Datenbanken: Unique Constraints*
 
 ## Volltextsuche
 
 Textindex auf name in der employees-Sammlung:
-`db.employees.createIndex({ name: "text" })`
+```
+db.employees.createIndex({ name: "text" })
+```
 
 Dieser Textindex ermöglicht die Durchführung von Volltextsuchen nach Mitarbeiternamen.
-
-*Beispiel bei relationalen Datenbanken: ???* **Todo: ergänzen**
