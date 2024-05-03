@@ -40,7 +40,7 @@ db.employees.insertMany([
   }
 ]);
 
-//db.employees.find();
+db.employees.find();
 
 db.departments.insertMany([
     {

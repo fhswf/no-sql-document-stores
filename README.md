@@ -28,7 +28,8 @@ npm start
 
 ![](images/image-1.png)
 
+# Playgrounds starten
 
+## Company Example (Grundlegenden CRUD Operationen)
 
-## Playground starten
-
+## Geo Example (Shipwrecks Collection u.a. mit Koordinaten)
