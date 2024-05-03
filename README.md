@@ -4,8 +4,16 @@ Das Repository kann als **Github Codespace** geöffnet werden. Dadurch startet e
 
 ## Initialisieren des Codespaces
 
-Nach dem Öffnen des Codespaces kann das Projekt mit dem folgenden Shell-Befehl gestartet werden:
+Zu Beginn sollte der folgende Befehl ausgeführt werden:
 
-  ```Shell
-  npm start
-  ```
+```Shell
+npm install
+```
+
+Anschließend kann das Projekt mit dem folgenden Shell-Befehl gestartet werden:
+
+```Shell
+npm start
+```
+
+## Playground starten
