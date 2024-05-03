@@ -1,13 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
+import express from "express";
+import mongoose from "mongoose";
 
 const app = express();
 const port = 3000;
 
-mongoose.connect('mongodb://localhost:27017/test-db', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect('mongodb://localhost:27017/test-db')
 .then(()=> {
     console.log("connected to mongodb");
 })

@@ -5,8 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "newstart": "node index_2.js"
+    "start": "node index_2.js"
   },
   "keywords": [],
   "author": "",
