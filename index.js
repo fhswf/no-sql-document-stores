@@ -4,7 +4,7 @@ import app from "./app.js"
 (
     async () => {
         try {
-            mongoose.connect("mongodb://localhost:27017/exampledb");
+            await mongoose.connect("mongodb://localhost:27017/exampledb");
             console.log("DB CONNECTED")
 
             const onListening = () => {
