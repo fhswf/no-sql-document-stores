@@ -16,7 +16,8 @@
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"mongodb.mongodb-vscode",
-				"esbenp.prettier-vscode"
+				"esbenp.prettier-vscode",
+				"nodemon.nodemon"
 			],
 			"settings": {
 				"editor.fontSize": 16,
